@@ -1,19 +1,20 @@
 const Sequelize = require('sequelize');
 
+
+/**
+ * Connector to sqlite
+ */
 const db = new Sequelize({
     dialect: 'sqlite',
     storage: __dirname + '/data.db'
 });
-/**
- * Title
-o	Description
-o	Due Date
-o	Status: incomplete / completed
-o	Priority: High / Medium / Low
-•	Each task can have notes added to it as well
-o	One task can have multiple notes under it
- */
 
+
+
+/**
+ * @Definition
+ * Model : Note 
+ */
 const Note = db.define('note', {
     note_id: {
         type: Sequelize.INTEGER,
@@ -25,6 +26,12 @@ const Note = db.define('note', {
         allowNull: false
     }
 });
+
+
+/**
+ * @Definition
+ * Model : Task 
+ */
 const Task = db.define('task', {
     id: {
         type: Sequelize.INTEGER,
@@ -58,6 +65,11 @@ const Task = db.define('task', {
 
 /**One task has many notes. This will add taskid to each note */
 Task.hasMany(Note)
+
+
+
+
+
 
 module.exports = {
     db,
