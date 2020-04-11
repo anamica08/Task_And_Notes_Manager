@@ -46,19 +46,19 @@
                 <tr>
                     <td>Priority:&nbsp;&nbsp;&nbsp;
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+                            <input class="form-check-input" type="radio" id="Radios1" value="Low">
                             <label class="form-check-label" for="exampleRadios1">
                           Low
                         </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" checked>
+                            <input class="form-check-input" type="radio" id="Radios2" value="medium" checked>
                             <label class="form-check-label" for="exampleRadios2">
                         Medium
                         </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                            <input class="form-check-input" type="radio" id="Radios3" value="high">
                             <label class="form-check-label" for="exampleRadios3">
                           High
                         </label>
@@ -98,68 +98,6 @@
             </div>
         </div>
         <div id="accordion" class="accordion">
-            <!--Card 1-->
-            <div class="card">
-                <div class="card-header">
-                    <button id="taskButton" class="card-link" type="button" data-toggle="collapse" data-target="#menuone" aria-expanded="false" aria-controls="menuone">
-                        <span class="collapsed"><p><b>></b></p></span>
-                        <span class="expanded"><p><b><</b></p></span>
-                       <a href="#">Learn JS</a><br>
-                       Join Nagarro boot camp for web dev<br>
-                       due date: 9/01/2020<br>
-                       status: Incomplete<br>
-                       Priority: Medium</p>
-                      </button>
-                </div>
-                <div id="menuone" class="collapse">
-                    <div class="card-body">
-                        <ul class="notes">
-                            <li>Note1Content</li>
-                            <li>Note2Content</li>
-                        </ul>
-                        <textarea rows="1" cols="90" id="addNote-textbox" placeholder="Add Note"></textarea>
-
-                        <input type="button" value="ADD" id="addNote" class="addNote">
-                    </div>
-                </div>
-                <input type="button" value="Update" onclick="updateData(task.id)">
-            </div>
-
-            <br>
-            <!--Card 2-->
-            <div class="card">
-                <div class="card-header">
-                    <button class="card-link" type="button" data-toggle="collapse" data-target="#menutwo" aria-expanded="false" aria-controls="menutwo"><span class="collapsed"><p><b>></b></p></span>
-                        <span class="expanded"><p><b><</b></p></span>
-                        Task 2
-                      </button>
-                </div>
-                <div id="menutwo" class="collapse">
-                    <div class="card-body">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo omnis, dignissimos veniam impedit sequi obcaecati perspiciatis fugiat magni, odio at eaque sapiente nulla voluptatum neque cum non voluptas laborum enim.
-
-                    </div>
-                </div>
-                <input type="button" value="Update" onclick="updateData(task.id)">
-            </div>
-
-            <br>
-            <!--Card 3-->
-            <div class="card">
-                <div class="card-header">
-                    <button class="card-link" type="button" data-toggle="collapse" data-target="#menu3" aria-expanded="false" aria-controls="menu3"><span class="collapsed"><p><b>></b></p></span>
-                        <span class="expanded"><p><b><</b></p></span>
-                        Task 3
-                      </button>
-                </div>
-                <div id="menu3" class="collapse">
-                    <div class="card-body">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet ut iste inventore, tempore, corrupti voluptatem neque tenetur nisi nam quis pariatur facere. Consequatur veniam corrupti corporis harum animi in ullam!
-                    </div>
-                </div>
-                <input type="button" value="Update" onclick="updateData(task.id)">
-            </div>
-
 
         </div>
     </div>

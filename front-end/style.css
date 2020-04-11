@@ -35,7 +35,13 @@
 
 .container h5 {
     text-align: left;
-    display: inline;
+    margin-top: 15px;
+    display: inline-block;
+}
+
+.sort {
+    padding: 3px;
+    margin-bottom: 11px;
 }
 
 .accordion {
@@ -60,7 +66,7 @@
 .card .card-header button {
     border: none;
     outline: none;
-    color: crimson;
+    color: rgb(4, 33, 83);
     font-size: 20px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -69,8 +75,15 @@
     padding: 10px 10px;
 }
 
+.card-body ul li {
+    padding: 4px;
+    font-size: 17px;
+    font-family: monospace;
+}
+
 .card {
     width: 100%;
+    margin: 20px;
 }
 
 .collapsed p b,
@@ -88,13 +101,14 @@
     margin-bottom: 10px;
 }
 
-p {
+.collapsed p,
+.expanded p {
     position: absolute;
     top: 5px;
     right: 20px;
     font-size: 20px;
-    color: white;
     -webkit-animation: minus 0.5s;
+    animation: none;
 }
 
 @keyframes minus {
