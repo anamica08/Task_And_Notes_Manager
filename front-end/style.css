@@ -1,0 +1,112 @@
+.heading {
+    padding: 20px;
+    margin: 10px;
+}
+
+.heading h2 {
+    text-decoration: underline;
+}
+
+.sort {
+    float: right;
+    margin: 10px;
+    padding: 7px;
+    font-size: 16px;
+    width: fit-content;
+}
+
+.heading h2 {
+    text-align: center;
+}
+
+.task-form {
+    width: 80%;
+    margin: 0 auto;
+    /* border: 2px dotted grey;*/
+    padding: 10px;
+}
+
+.task-form form .add {
+    float: right;
+    padding: 7px;
+    font-size: 16px;
+    width: fit-content;
+}
+
+.container h5 {
+    text-align: left;
+    display: inline;
+}
+
+.accordion {
+    margin-top: 30px;
+    margin-left: 73px;
+    width: 90%;
+}
+
+.card-header,
+.card-link,
+.card-link:hover {
+    background-color: whitesmoke;
+    text-align: left;
+    color: rgb(26, 74, 112);
+}
+
+.card .card-header button p {
+    text-align: center;
+    color: black;
+}
+
+.card .card-header button {
+    border: none;
+    outline: none;
+    color: crimson;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.card-body {
+    padding: 10px 10px;
+}
+
+.card {
+    width: 100%;
+}
+
+.collapsed p b,
+.expanded p b {
+    color: rgb(8, 77, 59);
+}
+
+#addNote-textbox {
+    padding: 7px;
+    font-family: cursive;
+}
+
+.addNote {
+    float: right;
+    margin-bottom: 10px;
+}
+
+p {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    font-size: 20px;
+    color: white;
+    -webkit-animation: minus 0.5s;
+}
+
+@keyframes minus {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+[aria-expanded="false"]>.expanded,
+[aria-expanded="true"]>.collapsed {
+    display: none;
+}

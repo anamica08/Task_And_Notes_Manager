@@ -5,12 +5,181 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!--script>
+        $(function() {
+            $("#inlineCheckbox").click(function() {
+                if ($(this).is(":checked")) {
+                    $("#checkbox").html("Complete");
+                } else {
+                    $("#checkbox").html("Incomplete");
+                }
+            });
+        });
+    </script-->
     <title>Document</title>
 </head>
 
 <body>
 
+    <div class="heading">
+        <h2>Task & Notes Manager</h2>
+    </div>
+    <!--Form To Add new Task-->
+    <div class="task-form">
+        <h5>Fill details to add new task:</h5>
+        <form>
+            <table class="col-10">
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Title" required>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Description">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <input class="form-control" type="date" value="" id="datePicker" required>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Priority:&nbsp;&nbsp;&nbsp;
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+                            <label class="form-check-label" for="exampleRadios1">
+                          Low
+                        </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" checked>
+                            <label class="form-check-label" for="exampleRadios2">
+                        Medium
+                        </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                            <label class="form-check-label" for="exampleRadios3">
+                          High
+                        </label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Status:&nbsp;&nbsp;&nbsp;
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox" onclick="changeText()">
+                            <!-- disabled-->
+                            <label class="form-check-label" id="checkbox-label" for="inlineCheckbox1">Incomplete</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type='button' id="add" class="add" value="Add New Task">&nbsp;&nbsp;</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    </div>
+
+
+    <!--Task Panel-->
+    <div class="container">
+        <h5><b>Task List</b></h5>
+        <div class="sort">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sort Task By:
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Due Date</a>
+                <a class="dropdown-item" href="#">Priority</a>
+                <a class="dropdown-item" href="#">Status</a>
+            </div>
+        </div>
+        <div id="accordion" class="accordion">
+            <!--Card 1-->
+            <div class="card">
+                <div class="card-header">
+                    <button id="taskButton" class="card-link" type="button" data-toggle="collapse" data-target="#menuone" aria-expanded="false" aria-controls="menuone">
+                        <span class="collapsed"><p><b>></b></p></span>
+                        <span class="expanded"><p><b><</b></p></span>
+                       <a href="#">Learn JS</a><br>
+                       Join Nagarro boot camp for web dev<br>
+                       due date: 9/01/2020<br>
+                       status: Incomplete<br>
+                       Priority: Medium</p>
+                      </button>
+                </div>
+                <div id="menuone" class="collapse">
+                    <div class="card-body">
+                        <ul class="notes">
+                            <li>Note1Content</li>
+                            <li>Note2Content</li>
+                        </ul>
+                        <textarea rows="1" cols="90" id="addNote-textbox" placeholder="Add Note"></textarea>
+
+                        <input type="button" value="ADD" id="addNote" class="addNote">
+                    </div>
+                </div>
+                <input type="button" value="Update" onclick="updateData(task.id)">
+            </div>
+
+            <br>
+            <!--Card 2-->
+            <div class="card">
+                <div class="card-header">
+                    <button class="card-link" type="button" data-toggle="collapse" data-target="#menutwo" aria-expanded="false" aria-controls="menutwo"><span class="collapsed"><p><b>></b></p></span>
+                        <span class="expanded"><p><b><</b></p></span>
+                        Task 2
+                      </button>
+                </div>
+                <div id="menutwo" class="collapse">
+                    <div class="card-body">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo omnis, dignissimos veniam impedit sequi obcaecati perspiciatis fugiat magni, odio at eaque sapiente nulla voluptatum neque cum non voluptas laborum enim.
+
+                    </div>
+                </div>
+                <input type="button" value="Update" onclick="updateData(task.id)">
+            </div>
+
+            <br>
+            <!--Card 3-->
+            <div class="card">
+                <div class="card-header">
+                    <button class="card-link" type="button" data-toggle="collapse" data-target="#menu3" aria-expanded="false" aria-controls="menu3"><span class="collapsed"><p><b>></b></p></span>
+                        <span class="expanded"><p><b><</b></p></span>
+                        Task 3
+                      </button>
+                </div>
+                <div id="menu3" class="collapse">
+                    <div class="card-body">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet ut iste inventore, tempore, corrupti voluptatem neque tenetur nisi nam quis pariatur facere. Consequatur veniam corrupti corporis harum animi in ullam!
+                    </div>
+                </div>
+                <input type="button" value="Update" onclick="updateData(task.id)">
+            </div>
+
+
+        </div>
+    </div>
 </body>
+<footer>
+
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <script src="script.js"></script>
 
 </html>
