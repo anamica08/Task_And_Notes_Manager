@@ -1,7 +1,7 @@
-const { db, Task, Note } = require('./model')
-const { Op } = require('sequelize')
+// const { db, Task, Note } = require('./model')
+// const { Op } = require('sequelize')
 
-//add data
+// //add data
 
 // async function task() {
 //     //await db.sync({ alter: true })
@@ -67,10 +67,30 @@ const { Op } = require('sequelize')
 // async function task() {
 //     await db.sync();
 //     const task = await Task.findByPk(1);
-//     task.status = "incomplete"
+//     task.status = "incomplete"  , priority , due date.
 //     task.save().then(() => {
 //         console.log("after updating", task)
 //     });
 
 // }
 // task()
+
+
+//sort by 
+
+//add note to a task
+// async function addTask() {
+//     route.post('/add', async(req, res) => {
+//         if (typeof req.body.task !== 'string' || req.body.task == '') {
+//             return res.status(400).send({ error: 'Task name not provided' });
+//         }
+//         //done is validated in view .
+//         const newTODO = await Todos.create({
+//             task: req.body.task,
+//             done: req.body.done,
+//             due: req.body.due
+//         })
+//         console.log("Task Added");
+//         res.status(201).send({ success: 'New task added' });
+//     })
+// }

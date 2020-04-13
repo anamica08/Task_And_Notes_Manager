@@ -1,3 +1,13 @@
+#errorMessage {
+    color: red;
+    font-size: 20px;
+    text-align: center;
+    font-family: monospace;
+    border-style: double;
+    margin: 5px 229px;
+    display: none;
+}
+
 .heading {
     padding: 20px;
     margin: 10px;
@@ -27,10 +37,15 @@
 }
 
 .task-form form .add {
-    float: right;
     padding: 7px;
     font-size: 16px;
-    width: fit-content;
+    margin-top: 5px;
+    font-feature-settings: normal;
+    float: right;
+}
+
+.container {
+    margin-top: 40px;
 }
 
 .container h5 {
@@ -45,8 +60,6 @@
 }
 
 .accordion {
-    margin-top: 30px;
-    margin-left: 73px;
     width: 90%;
 }
 
@@ -61,6 +74,14 @@
 .card .card-header button p {
     text-align: center;
     color: black;
+}
+
+.card-link .title-tag {
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 23px;
+    margin-bottom: 5px;
+    color: #323273;
 }
 
 .card .card-header button {
@@ -91,7 +112,7 @@
     color: rgb(8, 77, 59);
 }
 
-#addNote-textbox {
+.textarea {
     padding: 7px;
     font-family: cursive;
 }
@@ -108,7 +129,6 @@
     right: 20px;
     font-size: 20px;
     -webkit-animation: minus 0.5s;
-    animation: none;
 }
 
 @keyframes minus {

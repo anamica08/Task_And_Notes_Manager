@@ -65,6 +65,7 @@ const Task = db.define('task', {
 
 /**One task has many notes. This will add taskid to each note */
 Task.hasMany(Note)
+Note.belongsTo(Task)
 
 
 

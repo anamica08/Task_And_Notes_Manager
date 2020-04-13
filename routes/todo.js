@@ -6,60 +6,86 @@ const route = Router()
 
 //display
 route.get('/', async(req, res) => {
-        const tasks = await Model.Task.findAll({ include: Model.Note });
-        console.log(JSON.stringify(tasks, null, 2));
-        res.status(200).send(tasks);
+    const tasks = await Model.Task.findAll({ include: Model.Note });
+    res.status(200).send(tasks);
+})
+
+//add a task
+route.post('/', async(req, res) => {
+    if (typeof req.body.title !== 'string' || req.body.title == '') {
+        return res.status(400).send({ message: 'Task name not provided' })
+    }
+    if (req.body.dueDate == '') {
+        return res.status(400).send({ message: 'dueDate not provided' });
+    }
+    const task = await Model.Task.create({
+        title: req.body.title,
+        description: req.body.description,
+        status: 'incomplete',
+        dueDate: req.body.dueDate,
+        priority: req.body.priority
+
     })
-    // async function task() {
-    //     await db.sync()
-    //     const tasks = await Task.findAll({ include: Note });
-    //     console.log(JSON.stringify(tasks, null, 2));
-
-// }
-// //create
-// route.post('/add', async(req, res) => {
-//         if (typeof req.body.task !== 'string' || req.body.task == '') {
-//             return res.status(400).send({ error: 'Task name not provided' });
-//         }
-//         //done is validated in view .
-//         const newTODO = await Todos.create({
-//             task: req.body.task,
-//             done: req.body.done,
-//             due: req.body.due
-//         })
-//         console.log("Task Added");
-//         res.status(201).send({ success: 'New task added' });
-//     })
-//     //update
-// route.put('/status', async(req, res) => {
-//     var idx = req.body.id;
-//     var todoToChange = await Todos.findByPk(idx);
-//     if (todoToChange == null) {
-//         return res.status(404).send({ error: 'Todo with id not found.' });
-//     }
-
-//     var status = req.body.done;
-
-//     console.log("update", todoToChange)
-//     todoToChange.done = status;
-//     todoToChange.save().then(() => {
-//         console.log("after updating", todoToChange)
-//     });
-//     console.log("Status updated");
-//     res.status(200).send({ success: 'Status updated', id: req.body.id, todoToChange });
-
-// })
+    console.log('Task Added: ', task, null, 2);
+    res.status(201).send({ success: 'New task added' });
+})
 
 
-// //delete
-// route.delete('/removedone', async(req, res) => {
-//     let listOfTasks = req.body.tasklist;
-//     for (let i = 0; i < listOfTasks.length; i++) {
-//         let task = await Todos.findByPk(listOfTasks[i]);
-//         await task.destroy({ force: true });
-//     }
-//     console.log("delete action executed succesfully");
-//     res.status(200).send({ sucesss: 'Removed Succesfully' });
-// })
+//add notes to a task
+route.post('/:id/notes', async(req, res) => {
+    if (isNaN(Number(req.params.id))) {
+        return res.status(400).send({
+            error: 'task id must be an integer'
+        })
+    }
+    let idx = Number(req.params.id);
+    const task = await Model.Task.findByPk(idx, { include: Model.Note });
+    await Model.Note.create({
+        text: req.body.text,
+        taskId: idx
+    });
+    res.status(200).send();
+})
+
+//get task by id
+route.get('/:id', async(req, res) => {
+    if (isNaN(Number(req.params.id))) {
+        return res.status(400).send({
+            error: 'task id must be an integer'
+        })
+    }
+    const task = await Model.Task.findByPk(req.params.id);
+    if (task == null) {
+        res.status(404).send({ error: "No task with this id exists" });
+    } else {
+        res.status(200).send({
+            id: task.id,
+            title: task.title,
+            description: task.description,
+            dueDate: task.dueDate,
+            priority: task.priority,
+            status: task.status
+        })
+
+    }
+
+})
+
+//update task
+route.patch('/:id', async(req, res) => {
+    const task = await Model.Task.findByPk(req.params.id);
+    if (task == null) {
+        res.status(404).send({ error: "No task with this id exists" })
+    };
+    task.dueDate = req.body.dueDate;
+    task.priority = req.body.priority;
+    task.status = req.body.status;
+    task.save().then(() => {
+        console.log("after updating", task)
+    })
+    res.status(200).send({ success: 'Succesfully updated' + req.params.id });
+})
+
+
 
 module.exports = route;
