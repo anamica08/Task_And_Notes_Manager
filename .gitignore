@@ -133,6 +133,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-./node_modules
+/node_modules
+.project description
 
 # End of https://www.gitignore.io/api/node,windows
