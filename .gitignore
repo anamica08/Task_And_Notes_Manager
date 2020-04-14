@@ -134,6 +134,6 @@ $RECYCLE.BIN/
 *.lnk
 
 /node_modules
-.project description
+project_description
 
 # End of https://www.gitignore.io/api/node,windows
