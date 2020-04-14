@@ -22,7 +22,7 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="title" placeholder="Title" required>
+                            <input type="text" class="form-control" id="title" placeholder="Title*" required>
                         </div>
                     </td>
                 </tr>
@@ -36,7 +36,7 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <input class="form-control" type="date" value="" id="datePicker" required>
+                            <input class="form-control" type="date" id="datePicker" required>
                         </div>
                     </td>
                 </tr>
@@ -80,7 +80,6 @@
     </div>
     </div>
 
-
     <!--Task Panel-->
     <div class="container">
         <h5><b>Task List</b></h5>
@@ -89,13 +88,14 @@
               Sort Task By:
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Due Date</a>
-                <a class="dropdown-item" href="#">Priority</a>
-                <a class="dropdown-item" href="#">Status</a>
+                <a class="dropdown-item" href="javascript:sortList('dateAsc')">Due Date(Ascending)</a>
+                <a class="dropdown-item" href="javascript:sortList('dateDesc')">Due Date(Descending)</a>
+                <a class="dropdown-item" href="javascript:sortList('priority')">Priority</a>
+                <a class="dropdown-item" href="javascript:sortList('status')">Status</a>
             </div>
         </div>
         <div id="accordion" class="accordion">
-
+            <!--List of todo fetched from server-->
         </div>
     </div>
 

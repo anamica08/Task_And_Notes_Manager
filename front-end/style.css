@@ -8,6 +8,11 @@
     display: none;
 }
 
+hr {
+    border: 1px solid darkgray;
+    width: 100%;
+}
+
 .heading {
     padding: 20px;
     margin: 10px;
@@ -90,6 +95,7 @@
     color: rgb(4, 33, 83);
     font-size: 20px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: -webkit-fill-available;
 }
 
 .card-body {
@@ -128,7 +134,7 @@
     top: 5px;
     right: 20px;
     font-size: 20px;
-    -webkit-animation: minus 0.5s;
+    animation: minus 0.5s;
 }
 
 @keyframes minus {
