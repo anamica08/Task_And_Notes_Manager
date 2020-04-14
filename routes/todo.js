@@ -4,13 +4,19 @@ const Model = require('../db/model')
 
 const route = Router()
 
-//display
+/**
+ *   get all tasks from db.
+ */
 route.get('/', async(req, res) => {
     const tasks = await Model.Task.findAll({ include: Model.Note });
     res.status(200).send(tasks);
 })
 
-//add a task
+
+
+/*
+ *  add a task to db.
+ */
 route.post('/', async(req, res) => {
     if (typeof req.body.title !== 'string' || req.body.title == '') {
         return res.status(400).send({ message: 'Task name not provided' })
@@ -31,7 +37,30 @@ route.post('/', async(req, res) => {
 })
 
 
-//add notes to a task
+
+/*
+ *   get notes of a task
+ */
+route.get('/:id/notes', async(req, res) => {
+    if (isNaN(Number(req.params.id))) {
+        return res.status(400).send({
+            error: 'task id must be an integer'
+        })
+    }
+    //find all notes where foreign ket taskID is req.param.id
+    Model.Note.findAll({
+        attributes: ['text'],
+        where: {
+            'taskId': req.params.id
+        }
+    }).then((notes) => res.send(notes));
+})
+
+
+
+/**
+ * add notes to a task
+ */
 route.post('/:id/notes', async(req, res) => {
     if (isNaN(Number(req.params.id))) {
         return res.status(400).send({
@@ -39,7 +68,6 @@ route.post('/:id/notes', async(req, res) => {
         })
     }
     let idx = Number(req.params.id);
-    const task = await Model.Task.findByPk(idx, { include: Model.Note });
     await Model.Note.create({
         text: req.body.text,
         taskId: idx
@@ -47,7 +75,9 @@ route.post('/:id/notes', async(req, res) => {
     res.status(200).send();
 })
 
-//get task by id
+/*
+ *   get task by id
+ */
 route.get('/:id', async(req, res) => {
     if (isNaN(Number(req.params.id))) {
         return res.status(400).send({
@@ -71,7 +101,9 @@ route.get('/:id', async(req, res) => {
 
 })
 
-//update task
+/**
+ * update task
+ * */
 route.patch('/:id', async(req, res) => {
     const task = await Model.Task.findByPk(req.params.id);
     if (task == null) {

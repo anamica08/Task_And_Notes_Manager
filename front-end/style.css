@@ -83,9 +83,8 @@ hr {
 
 .card-link .title-tag {
     text-decoration: none;
-    font-family: sans-serif;
+    font-family: monospace;
     font-size: 23px;
-    margin-bottom: 5px;
     color: #323273;
 }
 

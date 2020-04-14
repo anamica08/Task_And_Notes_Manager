@@ -262,7 +262,7 @@ function createTaskCard(task) {
         <button id="taskButton" class="card-link" type="button" data-toggle="collapse" data-target="#note${task.id}" aria-expanded="false" aria-controls="note${task.id}">
             <span class="collapsed"><p><b>></b></p></span>
             <span class="expanded"><p><b><</b></p></span>
-          <b class="title-tag">${task.title}</b> <br><hr>
+          <b class="title-tag">${task.title}</b> <hr>
            Description: ${task.description}<br>
            Due Date: ${task.dueDate}<br>
            Status: ${task.status}<br>
