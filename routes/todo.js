@@ -1,6 +1,6 @@
 const { Router } = require('express')
 const Model = require('../db/model')
-    //console.log({ Model });
+
 
 const route = Router()
 
@@ -47,6 +47,11 @@ route.get('/:id/notes', async(req, res) => {
             error: 'task id must be an integer'
         })
     }
+    const task = await Model.Task.findByPk(req.params.id);
+    if (task == null) {
+        return res.status(404).send({ error: "No task with this id exists" })
+    };
+
     //find all notes where foreign ket taskID is req.param.id
     Model.Note.findAll({
         attributes: ['text'],
