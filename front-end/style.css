@@ -83,7 +83,8 @@ hr {
 
 .card-link .title-tag {
     text-decoration: none;
-    font-family: monospace;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    ;
     font-size: 23px;
     color: #1e253a;
 }
