@@ -257,29 +257,125 @@ function sortList(param) {
 
 //create task card
 function createTaskCard(task) {
-    document.querySelector("#accordion").innerHTML += ` <div class="card" id=${task.id}>
-    <div class="card-header" id="card-header">
-        <button id="taskButton" class="card-link" type="button" data-toggle="collapse" data-target="#note${task.id}" aria-expanded="false" aria-controls="note${task.id}">
-            <span class="collapsed"><p><b>></b></p></span>
-            <span class="expanded"><p><b><</b></p></span>
-          <b class="title-tag">${task.title}</b> <hr>
-           Description: ${task.description}<br>
-           Due Date: ${task.dueDate}<br>
-           Status: ${task.status}<br>
-           Priority: ${task.priority}</p>
-          </button>
-    </div>
-    <div id="note${task.id}" class="collapse">
-        <div class="card-body" id="${task.id}">
-            <ul class="notes" id="list${task.id}">
-            </ul>
-            <textarea rows="1" cols="90" class="textarea" id="addNote-textbox${task.id}" placeholder="Add Note"></textarea>
-            <input type="button" value="ADD" id="addNote" class="addNote" onclick="addNoteToTask(${task.id})">
-        </div>
-    </div>
-    <input type="button" id="updateButton" value="Update" onclick="setUpUpdateModal(${task.id})" data-toggle="modal" data-target="#updateModal">
-    </div>`
+    let accordion = document.getElementById("accordion")
+    let card = document.createElement("div")
+
+
+    card.className = "card"
+    card.id = `${task.id}`
+
+    var child1 = document.createElement("div")
+    child1.className = "card-header"
+    child1.id = "card-header"
+    var button = document.createElement("button")
+    button.id = "taskButton"
+    button.setAttribute("data-toggle", "collapse")
+    button.setAttribute("data-target", `#note${task.id}`)
+    button.setAttribute("aria-expanded", "false")
+    button.setAttribute("aria-controls", `note${task.id}`)
+    button.className = "card-link"
+    button.type = "button"
+        //button.append("hello world")
+    child1.appendChild(button);
+    card.appendChild(child1)
+
+
+    let child2 = document.createElement("div")
+    child2.className = "collapse"
+    child2.id = `note${task.id}`
+
+    //card-body
+    var cardBody = document.createElement("div")
+    cardBody.id = `${task.id}`
+    cardBody.className = "card-body"
+    var ul = document.createElement("ul")
+    ul.className = "notes"
+    ul.id = `list${task.id}`
+    cardBody.appendChild(ul)
+    var textarea = document.createElement("textarea")
+    textarea.setAttribute("rows", "1")
+    textarea.setAttribute("cols", "90")
+    textarea.className = "textarea"
+    textarea.id = `addNote-textbox${task.id}`
+    textarea.placeholder = "Add Note"
+    cardBody.appendChild(textarea)
+    var addbtn = document.createElement("input")
+    addbtn.type = "button"
+    addbtn.value = "Add"
+    addbtn.id = "addNote"
+    addbtn.className = "addNote"
+    addbtn.setAttribute("onclick", `addNoteToTask(${task.id})`)
+    cardBody.appendChild(addbtn)
+
+    child2.appendChild(cardBody)
+    card.appendChild(child2)
+
+
+    let child3 = document.createElement("input")
+    child3.id = "updateButton"
+    child3.value = "Update"
+    child3.type = "button"
+    child3.setAttribute("onclick", `setUpUpdateModal(${task.id})`)
+    child3.setAttribute("data-toggle", "modal")
+    child3.setAttribute("data-target", "#updateModal")
+    card.appendChild(child3)
+
+    //span child of card button
+
+    var span1 = document.createElement("span")
+    span1.className = "collapsed"
+    var p1 = document.createElement("p")
+    var b1 = document.createElement("b")
+    b1.textContent = ">"
+    span1.appendChild(p1)
+    p1.appendChild(b1)
+
+    var span2 = document.createElement("span")
+    span2.className = "expanded"
+    var p2 = document.createElement("p")
+    var b2 = document.createElement("b")
+    b2.textContent = "<"
+    span2.appendChild(p2)
+    p2.appendChild(b2)
+
+    button.appendChild(span1)
+    button.appendChild(span2)
+
+    //button text
+    var taskTitle = document.createElement("b")
+    taskTitle.className = "title-tag"
+    taskTitle.innerHTML = `${task.title}`
+    var hr = document.createElement("hr")
+    button.appendChild(taskTitle)
+    button.appendChild(hr)
+    var desc = document.createElement("textContent")
+    desc.innerText = `Description ==> ${task.description}`
+    var br1 = document.createElement("br")
+    var br2 = document.createElement("br")
+    var br3 = document.createElement("br")
+
+
+    var due = document.createElement("textContent")
+    due.innerText = `Due Date ==> ${task.dueDate}`
+    var status1 = document.createElement("textContent")
+    status1.innerText = `Status ==> ${task.status}`
+    var priority = document.createElement("textContent")
+    priority.innerText = `Priority ==> ${task.priority}`
+        //br > DueDate: < br > Status: Incomplete < br > priority: Medium "
+    button.appendChild(desc)
+    button.appendChild(br1)
+    button.appendChild(due)
+    button.appendChild(br2)
+    button.appendChild(status1)
+    button.appendChild(br3)
+    button.appendChild(priority)
+    accordion.appendChild(card)
+
+
     for (let note of task.notes) {
-        document.getElementById(`list${task.id}`).innerHTML += `<li>${note.text}</li>`
+        var li = document.createElement("li");
+        li.append(`${note.text}`);
+
+        document.getElementById(`list${task.id}`).appendChild(li);
     }
 }

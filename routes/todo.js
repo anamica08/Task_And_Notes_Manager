@@ -27,12 +27,12 @@ route.post('/', async(req, res) => {
     const task = await Model.Task.create({
         title: req.body.title,
         description: req.body.description,
-        status: 'incomplete',
+        status: 'Incomplete',
         dueDate: req.body.dueDate,
         priority: req.body.priority
 
     })
-    console.log('Task Added: ', task, null, 2);
+
     res.status(201).send({ success: 'New task added' });
 })
 
