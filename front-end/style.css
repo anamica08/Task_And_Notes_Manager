@@ -93,7 +93,7 @@ hr {
     color: rgb(4, 33, 83);
     font-size: 20px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    width: -webkit-fill-available;
+    width: 90%;
     background-color: lightcyan;
     border-radius: 6px;
 }
