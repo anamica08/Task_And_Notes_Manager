@@ -229,25 +229,25 @@ function sortList(param) {
          */
         else if (param === 'status') {
             let dummyTaskList = data;
+            console.log(dummyTaskList)
             for (task of dummyTaskList) {
                 if (task.status == "Complete") {
-                    task.status = 0;
-                } else if (task.status == "Incomplete") {
                     task.status = 1;
+                } else if (task.status == "Incomplete") {
+                    task.status = 2;
                 }
             }
             dummyTaskList.sort((obj1, obj2) => {
-                return obj1.status - obj2.status;
+                return obj2.status - obj1.status;
             });
             document.querySelector("#accordion").innerHTML = "";
             for (let task of dummyTaskList) {
-                if (task.status == 0) {
+                if (task.status == 1) {
                     task.status = "Complete";
-                } else if (task.status == 1) {
+                } else if (task.status == 2) {
                     task.status = "Incomplete";
-
-                    createTaskCard(task);
                 }
+                createTaskCard(task);
             }
         }
     }));
