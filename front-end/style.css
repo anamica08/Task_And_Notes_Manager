@@ -1,13 +1,3 @@
-#errorMessage {
-    color: red;
-    font-size: 20px;
-    text-align: center;
-    font-family: monospace;
-    border-style: double;
-    margin: 5px 229px;
-    display: none;
-}
-
 hr {
     border: 1px solid darkgray;
     width: 100%;
@@ -20,17 +10,6 @@ hr {
 
 .heading h2 {
     text-decoration: underline;
-}
-
-.sort {
-    float: right;
-    margin: 10px;
-    padding: 7px;
-    font-size: 16px;
-    width: fit-content;
-}
-
-.heading h2 {
     text-align: center;
 }
 
@@ -49,6 +28,12 @@ hr {
     float: right;
 }
 
+.sort {
+    float: right;
+    padding: 3px;
+    margin-top: 9px;
+}
+
 .container {
     margin-top: 40px;
 }
@@ -57,11 +42,6 @@ hr {
     text-align: left;
     margin-top: 15px;
     display: inline-block;
-}
-
-.sort {
-    padding: 3px;
-    margin-bottom: 11px;
 }
 
 .accordion {
@@ -76,19 +56,6 @@ hr {
     color: rgb(26, 74, 112);
 }
 
-.card .card-header button p {
-    text-align: center;
-    color: black;
-}
-
-.card-link .title-tag {
-    text-decoration: none;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    ;
-    font-size: 23px;
-    color: #1e253a;
-}
-
 .card .card-header button {
     border: none;
     outline: none;
@@ -98,34 +65,14 @@ hr {
     width: -webkit-fill-available;
 }
 
-.card-body {
-    padding: 10px 10px;
-}
-
-.card-body ul li {
-    padding: 4px;
-    font-size: 17px;
-    font-family: monospace;
-}
-
-.card {
-    width: 100%;
-    margin: 20px;
+.card .card-header button p {
+    text-align: center;
+    color: black;
 }
 
 .collapsed p b,
 .expanded p b {
     color: rgb(8, 77, 59);
-}
-
-.textarea {
-    padding: 7px;
-    font-family: cursive;
-}
-
-.addNote {
-    float: right;
-    margin-bottom: 10px;
 }
 
 .collapsed p,
@@ -149,4 +96,37 @@ hr {
 [aria-expanded="false"]>.expanded,
 [aria-expanded="true"]>.collapsed {
     display: none;
+}
+
+.card-link .title-tag {
+    text-decoration: none;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    ;
+    font-size: 23px;
+    color: #1e253a;
+}
+
+.card {
+    width: 100%;
+    margin: 20px;
+}
+
+.card-body {
+    padding: 10px 10px;
+}
+
+.card-body ul li {
+    padding: 4px;
+    font-size: 17px;
+    font-family: monospace;
+}
+
+.textarea {
+    padding: 7px;
+    font-family: cursive;
+}
+
+.addNote {
+    float: right;
+    margin-bottom: 10px;
 }

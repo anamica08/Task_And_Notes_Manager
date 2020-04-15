@@ -118,7 +118,7 @@ route.patch('/:id', async(req, res) => {
     task.priority = req.body.priority;
     task.status = req.body.status;
     task.save().then(() => {
-        console.log("after updating", task)
+
     })
     res.status(200).send({ success: 'Succesfully updated' + req.params.id });
 })
