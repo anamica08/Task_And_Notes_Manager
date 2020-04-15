@@ -10,7 +10,8 @@ app.use('/todos', todo_route);
 
 db.sync()
     .then(() => {
-        app.listen(3232);
+        var port = process.env.PORT || 3232;
+        app.listen(port);
     })
     .catch((err) => {
         console.error(err);

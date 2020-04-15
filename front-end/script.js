@@ -88,11 +88,7 @@ document.getElementById('add').onclick = async function addTask() {
         document.getElementsByName('priority')[1].checked = true
 
     }
-    if (resp.status == 400) {
-        document.getElementById("errorMessage").innerHTML = resp.statusText;
-        document.getElementById("errorMessage").style.display = "block";
 
-    }
 }
 
 
